@@ -1,4 +1,4 @@
-# Welcome to your Lovable project
+# Welcome to your Somanath's project
 
 ## Project info
 
@@ -64,7 +64,7 @@ This project is built with:
 
 Simply open [Lovable](https://lovable.dev/projects/03d09506-39a4-4dee-ad12-4090da5e4907) and click on Share -> Publish.
 
-## Can I connect a custom domain to my Lovable project?
+## Can I connect a custom domain to my project?
 
 Yes, you can!
 
