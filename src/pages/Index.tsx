@@ -1,5 +1,4 @@
-import { useState } from "react";
-import { Brain, Clock, TrendingUp, Users, Zap } from "lucide-react";
+import { Brain, Clock, TrendingUp, Users } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Header from "@/components/Header";
 import StatsCard from "@/components/StatsCard";
@@ -7,38 +6,12 @@ import ProgressChart from "@/components/ProgressChart";
 import DocumentUpload from "@/components/DocumentUpload";
 import QuickActions from "@/components/QuickActions";
 import RecentActivity from "@/components/RecentActivity";
-import XPBar from "@/components/XPBar";
-import AchievementGrid from "@/components/AchievementGrid";
-import DailyGoals from "@/components/DailyGoals";
-import AchievementNotification from "@/components/AchievementNotification";
 import heroImage from "@/assets/hero-learning.jpg";
 
 const Index = () => {
-  const [showAchievement, setShowAchievement] = useState(false);
-  
-  // Simulate achievement unlock (in real app, this would come from backend)
-  const handleAchievementTrigger = () => {
-    setShowAchievement(true);
-  };
-
-  const mockAchievement = {
-    id: "daily-goals",
-    title: "Goal Crusher",
-    description: "Complete all daily goals for the first time!",
-    icon: "trophy" as const,
-    xpReward: 100,
-    type: "gold" as const,
-  };
   return (
     <div className="min-h-screen bg-gradient-to-br from-background via-muted/30 to-background">
       <Header />
-      
-      {showAchievement && (
-        <AchievementNotification 
-          achievement={mockAchievement}
-          onClose={() => setShowAchievement(false)}
-        />
-      )}
       
       {/* Hero Section */}
       <section className="relative overflow-hidden">
@@ -52,7 +25,7 @@ const Index = () => {
                 Transform your study materials into personalized learning experiences with AI-powered assessments and intelligent progress tracking.
               </p>
               <div className="flex flex-col sm:flex-row gap-4">
-                <Button size="lg" variant="gradient" className="text-lg px-8 py-6" onClick={handleAchievementTrigger}>
+                <Button size="lg" variant="gradient" className="text-lg px-8 py-6">
                   Start Learning
                 </Button>
                 <Button size="lg" variant="outline" className="text-lg px-8 py-6">
@@ -74,16 +47,6 @@ const Index = () => {
 
       {/* Dashboard Section */}
       <section className="container mx-auto px-4 py-16">
-        {/* XP Bar */}
-        <div className="mb-8">
-          <XPBar 
-            currentXP={2847} 
-            level={8} 
-            xpToNextLevel={453}
-            totalXPForNextLevel={800}
-          />
-        </div>
-
         <div className="mb-8">
           <h2 className="text-3xl font-bold text-foreground mb-2">Your Learning Dashboard</h2>
           <p className="text-muted-foreground">Track your progress and continue your learning journey</p>
@@ -97,7 +60,6 @@ const Index = () => {
             subtitle="+2.1h this week"
             icon={Clock}
             trend="up"
-            xpValue={25}
           />
           <StatsCard
             title="Learning Streak"
@@ -105,21 +67,18 @@ const Index = () => {
             subtitle="Personal best!"
             icon={TrendingUp}
             trend="up"
-            xpValue={50}
           />
           <StatsCard
-            title="XP Earned"
-            value="2,847"
-            subtitle="+150 XP today"
-            icon={Zap}
-            trend="up"
+            title="Courses Active"
+            value="3"
+            subtitle="Mathematics, Physics, Biology"
+            icon={Brain}
           />
           <StatsCard
             title="Study Groups"
             value="2"
             subtitle="Collaborative learning"
             icon={Users}
-            xpValue={10}
           />
         </div>
 
@@ -127,12 +86,10 @@ const Index = () => {
         <div className="grid lg:grid-cols-3 gap-8">
           <div className="lg:col-span-2 space-y-8">
             <ProgressChart />
-            <AchievementGrid />
             <DocumentUpload />
           </div>
           
           <div className="space-y-8">
-            <DailyGoals />
             <QuickActions />
             <RecentActivity />
           </div>
